@@ -1,38 +1,434 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --primary: #242830;
+  --primary-dark: #1c1f25;
+  --text-color: #abacaf;
+  --secondary: #12da79;
+  --white: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  background: #242830;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  border: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  line-height: 1.1;
+}
+
+.btn:hover {
+  background-color: #fff;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.btn:disabled {
   pointer-events: none;
+  opacity: 0.5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input:focus {
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header Styles */
+header {
+  background-color: var(--primary-dark);
+}
+
+header .inner-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+header a {
+  color: var(--white);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+header a:hover {
+  opacity: 1;
+  color: #12da79;
+}
+
+header .brand a {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  word-spacing: 10px;
+}
+
+header .nav-links {
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+header .nav-links li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+header .nav-links li:last-child {
+  margin-right: 0;
+}
+
+.add-btn {
+  width: 80px;
+  background: var(--secondary);
+  padding: 5px 0;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.add-btn i {
+  font-size: 0.6em;
+  margin-right: 5px;
+}
+
+.add-btn:hover {
+  color: var(--primary);
+  background: var(--white);
+}
+
+/* Add Page */
+.add-content {
+  padding: 100px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.add-content .input-wrapper input {
+  width: 100%;
+  background-color: var(--primary-dark);
+  padding: 15px 15px 15px 20px;
+  border-radius: 5px;
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  border: 1px solid var(--primary-dark);
+}
+
+input::placeholder {
+  color: rgb(223, 223, 223);
+}
+
+.add-content .input-wrapper input:focus {
+  border: 1px solid var(--secondary);
+}
+
+.results {
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.results li {
+  list-style: none;
+}
+
+.result-card {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.result-card .poster-wrapper img,
+.filler-poster {
+  width: 75px;
+  height: 113px;
+  background-color: #dbdada;
+  border-radius: 5px;
+  margin-right: 15px;
+  display: block;
+  color: transparent;
+}
+
+.result-card .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-card .info .title {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  font-weight: 600;
+  margin: 0;
+}
+
+.result-card .info .release-date {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.result-card .controls button {
+  margin-right: 10px;
+}
+
+/* Movie Page */
+.movie-page {
+  padding: 30px 0;
+}
+
+.movie-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 50px;
+}
+
+.count-pill {
+  display: block;
+  background-color: var(--secondary);
+  padding: 5px 15px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 999px;
+  color: var(--primary);
+}
+
+.movie-page .heading {
+  color: var(--secondary);
+  margin: 0;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+
+.movie-card {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  border: 0;
+  display: block;
+}
+
+.movie-card img {
+  width: 100%;
+  display: block;
+}
+
+.movie-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover .overlay {
+  background: rgba(0, 0, 0, 0.418);
+  border: 3px solid var(--secondary);
+}
+
+.detail {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.detail-btn {
+  position: relative;
+  margin-bottom: 100px;
+  padding: 10px 20px;
+  color: var(--primary);
+  background-color: #12da79;
+  border: none;
+  border-radius: 4px;
+}
+
+.movie-card .inner-card-controls {
+  display: inline;
+  background-color: red;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 3px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover .inner-card-controls {
+  opacity: 1;
+}
+
+.ctrl-btn {
+  color: #fefefe;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+  font-size: 1.25rem;
+  padding: 5px;
+  margin: 0;
+}
+
+.ctrl-btn:hover {
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.movie-page .no-movies {
+  color: #c4c4c4;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.no-movies h2 {
+  font-size: 3em;
+}
+
+.no-movies .add-btn {
+  padding: 10px 10px 8px;
+  margin-top: 30px;
+  font-size: 1.2em;
+}
+
+.movie-info {
+  height: 90vh;
   color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movie-info-img {
+  width: 250px;
+  position: relative;
+  /* border: 2px solid var(--secondary); */
+}
+.movie-info-img img {
+  width: 100%;
+  height: 100%;
+}
+.movie-info-rating {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  width: 60px;
+  height: 25px;
+  background: var(--secondary);
+  color: var(--primary);
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.movie-info-rating i {
+  padding: 2px 5px;
+}
+
+.movie-info-title {
+  text-align: center;
+  margin-top: 40px;
+  color: #ececec;
+}
+.movie-info-title h3 {
+  font-size: 1.6em;
+  color: var(--secondary);
+}
+
+.movie-info-title p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.movie-info-overview {
+  width: 50%;
+  text-align: center;
+  margin-top: 30px;
+  line-height: 30px;
+  color: #ececec;
+}
+
+.movie-info-overview p {
+  font-size: 1.3em;
+}
+.movie-info-overview p span {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+  .movie-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
   }
 }
